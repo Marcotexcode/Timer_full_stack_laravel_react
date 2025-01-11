@@ -23,6 +23,7 @@ export default function TimerComponent(props) {
         }
     };
 
+    
     return (
         <div className="bg-slate-500 rounded-lg p-5 mt-6 flex justify-between items-center">
             <span className="text-2xl">{props.name}: {time}s</span>
