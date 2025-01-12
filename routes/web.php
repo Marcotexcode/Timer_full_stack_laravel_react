@@ -1,9 +1,6 @@
 <?php
-
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\TimerController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +13,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-});
+Route::get('/', [TimerController::class, 'index']);
+Route::post('/add-timer', [TimerController::class, 'store']);
+Route::delete('/delete-timer/{id}', [TimerController::class, 'destroy']);
 
 require __DIR__.'/auth.php';
+

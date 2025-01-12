@@ -23,3 +23,9 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+@layer components {
+    .btn {
+        @apply rounded-lg px-5 py-1
+    }
+}

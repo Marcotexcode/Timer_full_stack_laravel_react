@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function TimerComponent(props) {
+export default function TimerComponent({data, onRemove}) {
+    const { name, id } = data
+
 
     const [time, setTime] = useState(0);
     
@@ -22,14 +24,16 @@ export default function TimerComponent(props) {
             setIsRunning(true);
         }
     };
-
     
     return (
         <div className="bg-slate-500 rounded-lg p-5 mt-6 flex justify-between items-center">
-            <span className="text-2xl">{props.name}: {time}s</span>
-            <button className="bg-slate-700 rounded-lg px-5 py-2" onClick={toggleTimer}>
-                {isRunning ? 'Stop' : 'Start'}
-            </button>
+            <span className="text-2xl">{name}: {time}s</span>
+            <div className="flex gap-2">
+                <button className="bg-slate-700 btn" onClick={toggleTimer}>
+                    {isRunning ? 'Stop' : 'Start'}
+                </button>
+                <button className="bg-slate-700 btn" onClick={() => onRemove(id)}>X</button>
+            </div>
         </div>
     );
 }
