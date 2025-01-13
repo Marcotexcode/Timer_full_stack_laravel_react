@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TimerController::class, 'index']);
 Route::post('/add-timer', [TimerController::class, 'store']);
 Route::delete('/delete-timer/{id}', [TimerController::class, 'destroy']);
+Route::patch('/update-timer/{id}', [TimerController::class, 'update']);
 
 require __DIR__.'/auth.php';
 
