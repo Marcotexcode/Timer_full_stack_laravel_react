@@ -63,17 +63,20 @@ export default function Welcome({getTimers}) {
     return (
         <>
             <div className="flex h-screen">
-                <div className="relative m-auto bg-slate-900 w-1/2 h-1/2 rounded-xl p-10 overflow-y-scroll">
-                    <div className="absolute py-0.5 px-2 rounded-md mb-2 text-red-600 top-2.5 left-8">{error}</div>
-                    <form className="flex gap-3" onSubmit={handlerAddTimer}>
-                        <input className="h-9 rounded-lg focus:border-none" value={timerName} type="text" placeholder="Aggiungi timer.." onChange={(e) => setTimerName(e.target.value)}/>
-                        <input className="bg-slate-500 btn" type="submit" value="Add" />
-                    </form>
-                    {timers.map((timer) => (
-                       <TimerComponent data={timer} onRemove = {handleRemoveTimer}/>
-                    ))}
+                <div className="m-auto w-1/2 h-1/2 ">
+                    <div className="m-auto rounded-xl p-2">
+                        <div className="absolute py-0.5 px-2 rounded-md mb-2 text-red-600 top-2.5 left-8">{error}</div>
+                        <form className="flex gap-3" onSubmit={handlerAddTimer}>
+                            <input className="h-9 rounded-lg focus:border-none" value={timerName} type="text" placeholder="Aggiungi timer.." onChange={(e) => setTimerName(e.target.value)}/>
+                            <input className="bg-slate-500 btn" type="submit" value="Add" />
+                        </form>
+                    </div>
+                    <div className="relative m-auto bg-slate-900 h-full rounded-xl p-3 overflow-y-scroll">
+                        {timers.map((timer) => (
+                        <TimerComponent data={timer} onRemove = {handleRemoveTimer}/>
+                        ))}
+                    </div>
                 </div>
-
                 <ConfirmComponent
                     isModalOpen={isModalOpen}
                     onConfirm={confirmDeleteTimer} 
